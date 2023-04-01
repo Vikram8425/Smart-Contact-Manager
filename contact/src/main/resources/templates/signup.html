@@ -28,39 +28,72 @@ th:replace="base::layout(~{::section})">
 				
 			 	<div class="mb-3">
     				<label for="for_name" class="form-label">Name</label>
-    				
+    				<b><label class="text-danger">*</label></b> 
     				<input name="name" 
     				placeholder="Enter Your Name Here" 
     				required type="text" 
-    				class="form-control "
-    				
+    				class="form-control"
+    				th:classappend="${#fields.hasErrors('name')? 'is-invalid' : ''}"
     				id="for_name" 
     				aria-describedby="emailHelp"
     				th:value=${user.name}
-    				
     				/>
-						
- 				</div>
+						<div id="validationServerUsernameFeedback" class="invalid-feedback" 
+						th:each="e :${#fields.errors('name')}" th:text="${e}">
+       					
+      					</div>
  				
  				<!--Email Field -->
 			 	<div class="mb-3">
     				<label for="for_email" class="form-label">Email address</label>
+    				<b><label class="text-danger">*</label></b> 
     				<input name="email" 
-    				placeholder="Enter Your Email Here" required type="email" class="form-control" id="for_email" aria-describedby="emailHelp "th:value=${user.email}>
+    				placeholder="Enter Your Email Here" required type="email" 
+    				class="form-control" 
+    				th:classappend="${#fields.hasErrors('email')? 'is-invalid' : ''}"
+    				id="for_email" 
+    				aria-describedby="emailHelp
+    				 "th:value=${user.email}>
+    				<div id="validationServerUsernameFeedback" class="invalid-feedback" 
+						th:each="e :${#fields.errors('email')}" th:text="${e}">
+       					
+      					</div>
  				</div>
  				
  				<!--Password Field -->
 			 	<div class="mb-3">
     				<label for="for_password" class="form-label">Password</label>
-    				<input name="password" 
-    				placeholder="Enter Your Password Here" required type="password" class="form-control" id="for_password" aria-describedby="emailHelp">
+    				<b><label class="text-danger">*</label></b> 
+    				<input th:value=${user.password}
+    				name="password" 
+    				placeholder="Enter Your Password Here" required type="password" 
+    				class="form-control" 
+    				th:classappend="${#fields.hasErrors('password')? 'is-invalid' : ''}"
+    				id="for_password" aria-describedby="emailHelp">
+    				
+    				<div id="validationServerUsernameFeedback" class="invalid-feedback" 
+						th:each="e :${#fields.errors('password')}" th:text="${e}">
+       					
+      					</div>
  				</div>
  				
  				<!--about Field -->
 			 	<div class="form-group">
     				<label for="for_about" class="form-label">About yourself</label>
+    				<b><label class="text-danger">*</label></b> 
     				<textarea 
-    				name="about" placeholder="Enter Your about Here" required type="text" class="form-control" id="for_about" aria-describedby="emailHelp" th:value=${user.about}></textarea>
+    				name="about" placeholder="Enter Your about Here" required type="text" 
+    				class="form-control" 
+    				th:classappend="${#fields.hasErrors('about')? 'is-invalid' : ''}"
+    				id="for_about" aria-describedby="emailHelp" th:text=${user.about}>
+    				</textarea>
+    				<div id="validationServerUsernameFeedback" class="invalid-feedback" 
+						th:each="e :${#fields.errors('name')}" th:text="${e}">
+       					
+      					</div><div id="validationServerUsernameFeedback" class="invalid-feedback" 
+						th:each="e :${#fields.errors('about')}" th:text="${e}">
+       					
+      					</div>
  				</div>
  				
  				<!--form terms and condition -->

@@ -30,12 +30,13 @@ public class User {
 	,flags = Flag.CASE_INSENSITIVE)
 	private String email;
 	@Column(length = 20)
+	 @Size(min=5, max=15, message="Password must should be in range of 5 to 10")
 	private String password;
 	private String role;
 	private boolean enabled;
 	private String imageUrl;
-	@Column(length = 300)
-	@NotBlank
+	
+	@NotBlank(message = "Must be Require")
 	private String about;
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
 	private List<Contact>contacts=new ArrayList<>();
